@@ -108,6 +108,7 @@ select {
   margin-top: 200px;
   font-size: 0.1rem;
   animation: title 1.2s forwards linear;
+  color: white;
 }
 
 .hero p {
@@ -115,6 +116,12 @@ select {
   opacity: 0;
   animation: subtitle 1.2s forwards linear;
   animation-delay: 1.2s;
+  color: white;
+}
+
+.btn {
+  background: rgb(175, 0, 0);
+  color: white;
 }
 
 /* input placeholder color changes */
