@@ -18,13 +18,13 @@ const runEnter = submit.on("click", function() {
     var inputValue = inputElement.property("value");
     
     console.log(inputValue)
-
     
     // // use the inputValue to filter on the data set
-    // var filtereddata = tableData.filter(date => date.datetime === inputValue);
+    var filtereddata = tableData.filter(date => date.datetime === inputValue);
     
     // console.log(filtereddata);
-    if (date.datetime === inputValue) {
+    if (datetime === inputValue) {
+        // var filtereddata = tableData.filter(date => date.datetime === inputValue);
         filtereddata.forEach(function(UFOdata) { // loop through data and console log each object
             // console.log(UFOdata);
             var row = tbody.append("tr") // add tr table elements to html
