@@ -18,7 +18,7 @@ tableData.forEach(function(data) { // loop through data and console log each obj
 });
 
 // click handler
-const runEnter = () => {
+const runEnter = function() {
 
     // keep the page from refreshing
     d3.event.preventDefault();
@@ -28,16 +28,15 @@ const runEnter = () => {
 
     // get the value of the input
     var inputValue = inputElement.property("value");
-
     console.log(inputValue)
 
     // use the inputValue to filter on the data set
     var filtereddata = tableData.filter(date => date.datetime === inputValue);
-
     console.log(filtereddata);
 
-    // removes the rows previously inputed or at least I thought it would
-    tbody.selectAll("tr").remove();
+    // removes the rows previously inputed
+    tbody.selectAll("td").remove();
+    console.log(tbody);
 
     filtereddata.forEach(function(UFOdata) { // loop through data and console log each object
         // console.log(UFOdata);
