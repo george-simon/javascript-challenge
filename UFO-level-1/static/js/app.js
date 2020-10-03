@@ -1,9 +1,7 @@
 // from data.js
 var tableData = data,
     submit = d3.select("#filter-btn"), // select the submit button
-    tbody = d3.select("tbody"),
-    output = d3.select(".output");
-
+    tbody = d3.select("tbody");
 
 
 // click handler
