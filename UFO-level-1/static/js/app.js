@@ -37,8 +37,7 @@ const runEnter = () => {
     console.log(filtereddata);
 
     // removes the rows previously inputed or at least I thought it would
-    // tbody.selectAll("tr").remove();
-    d3.select('tableData').remove();
+    tbody.selectAll("tr").remove();
 
     filtereddata.forEach(function(UFOdata) { // loop through data and console log each object
         // console.log(UFOdata);
