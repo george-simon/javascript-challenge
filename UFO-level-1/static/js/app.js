@@ -22,8 +22,10 @@ const runEnter = submit.on("click", function() {
     // // use the inputValue to filter on the data set
     var filtereddata = tableData.filter(date => date.datetime === inputValue);
     
-    // console.log(filtereddata);
-    if (datetime === inputValue) {
+    console.log(filtereddata);
+    console.log(filtereddata[0].datetime);
+
+    if (filtereddata[0].datetime === inputValue) {
         // var filtereddata = tableData.filter(date => date.datetime === inputValue);
         filtereddata.forEach(function(UFOdata) { // loop through data and console log each object
             // console.log(UFOdata);
