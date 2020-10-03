@@ -1,7 +1,8 @@
 // from data.js
 var tableData = data,
     submit = d3.select("#filter-btn"), // select the submit button
-    tbody = d3.select("tbody");
+    tbody = d3.select("tbody"),
+    output = d3.select(".output");
 
 
 
@@ -10,6 +11,9 @@ const runEnter = submit.on("click", function() {
 
     // keep the page from refreshing
     d3.event.preventDefault();
+   
+    // clear the existing output
+    output.clear(cell.text.value);
 
     // select input and get results
     var inputElement = d3.select("#datetime")
@@ -25,37 +29,72 @@ const runEnter = submit.on("click", function() {
     console.log(filtereddata);
     // console.log(filtereddata[0].datetime);
 
-    if (filtereddata[0].datetime === inputValue) { 
-        // var filtereddata = tableData.filter(date => date.datetime === inputValue);
+    const handleChange = (event) => {
+        // grab the value of the input field
+        let value = d3.event.inputvalue;
+      
+        // clear the existing output
+        output.clear(cell.text);
+
         filtereddata.forEach(function(UFOdata) { // loop through data and console log each object
             // console.log(UFOdata);
             var row = tbody.append("tr") // add tr table elements to html
-    
+
             Object.entries(UFOdata).forEach(function([key, value]){ // loop through and console log key value pars
                 // console.log(key, value);
-    
-                var cell = tbody.append("td"); // add td table elements to html
-                cell.text(value); // attach value to td table elements
-            });
-        });
-    }
-    else {
-        // display ALL the data
-        tableData.forEach(function(UFOdata) { // loop through data and console log each object
-            // console.log(UFOdata);
-            var row = tbody.append("tr") // add tr table elements to html
-        
-            Object.entries(UFOdata).forEach(function([key, value]){ // loop through and console log key value pars
-                // console.log(key, value);
-        
+
                 var cell = tbody.append("td"); // add td table elements to html
                 cell.text(value); // attach value to td table elements
             });
         });
     }
 
+    runEnter.on("change", handleChange);
+
+    // if (filtereddata[0].datetime === inputValue) { 
+    //     // var filtereddata = tableData.filter(date => date.datetime === inputValue);
+    //     filtereddata.forEach(function(UFOdata) { // loop through data and console log each object
+    //         // console.log(UFOdata);
+    //         var row = tbody.append("tr") // add tr table elements to html
+    
+    //         Object.entries(UFOdata).forEach(function([key, value]){ // loop through and console log key value pars
+    //             // console.log(key, value);
+    
+    //             var cell = tbody.append("td"); // add td table elements to html
+    //             cell.text(value); // attach value to td table elements
+    //         });
+    //     });
+    // }
+    // else {
+    //     // display ALL the data
+    //     tableData.forEach(function(UFOdata) { // loop through data and console log each object
+    //         // console.log(UFOdata);
+    //         var row = tbody.append("tr") // add tr table elements to html
+        
+    //         Object.entries(UFOdata).forEach(function([key, value]){ // loop through and console log key value pars
+    //             // console.log(key, value);
+        
+    //             var cell = tbody.append("td"); // add td table elements to html
+    //             cell.text(value); // attach value to td table elements
+    //         });
+    //     });
+    // }
+
     
 
+});
+
+// display ALL the data
+tableData.forEach(function(UFOdata) { // loop through data and console log each object
+    // console.log(UFOdata);
+    var row = tbody.append("tr") // add tr table elements to html
+
+    Object.entries(UFOdata).forEach(function([key, value]){ // loop through and console log key value pars
+        // console.log(key, value);
+
+        var cell = tbody.append("td"); // add td table elements to html
+        cell.text(value); // attach value to td table elements
+    });
 });
 
 // // detecting enter key for input submission
