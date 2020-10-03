@@ -3,18 +3,7 @@ var tableData = data,
     submit = d3.select("#filter-btn"), // select the submit button
     tbody = d3.select("tbody");
 
-// display ALL the data
-tableData.forEach(function(UFOdata) { // loop through data and console log each object
-    // console.log(UFOdata);
-    var row = tbody.append("tr") // add tr table elements to html
 
-    Object.entries(UFOdata).forEach(function([key, value]){ // loop through and console log key value pars
-        // console.log(key, value);
-
-        var cell = tbody.append("td"); // add td table elements to html
-        cell.text(value); // attach value to td table elements
-    });
-});
 
 // click handler
 const runEnter = submit.on("click", function() {
@@ -30,23 +19,40 @@ const runEnter = submit.on("click", function() {
     
     console.log(inputValue)
 
-    // use the inputValue to filter on the data set
-    var filtereddata = tableData.filter(date => date.datetime === inputValue);
     
-    console.log(filtereddata);
-
-
-    filtereddata.forEach(function(UFOdata) { // loop through data and console log each object
-        // console.log(UFOdata);
-        var row = tbody.append("tr") // add tr table elements to html
-
-        Object.entries(UFOdata).forEach(function([key, value]){ // loop through and console log key value pars
-            // console.log(key, value);
-
-            var cell = tbody.append("td"); // add td table elements to html
-            cell.text(value); // attach value to td table elements
+    // // use the inputValue to filter on the data set
+    // var filtereddata = tableData.filter(date => date.datetime === inputValue);
+    
+    // console.log(filtereddata);
+    if (date.datetime === inputValue) {
+        filtereddata.forEach(function(UFOdata) { // loop through data and console log each object
+            // console.log(UFOdata);
+            var row = tbody.append("tr") // add tr table elements to html
+    
+            Object.entries(UFOdata).forEach(function([key, value]){ // loop through and console log key value pars
+                // console.log(key, value);
+    
+                var cell = tbody.append("td"); // add td table elements to html
+                cell.text(value); // attach value to td table elements
+            });
         });
-    });
+    }
+    else {
+        // display ALL the data
+        tableData.forEach(function(UFOdata) { // loop through data and console log each object
+            // console.log(UFOdata);
+            var row = tbody.append("tr") // add tr table elements to html
+        
+            Object.entries(UFOdata).forEach(function([key, value]){ // loop through and console log key value pars
+                // console.log(key, value);
+        
+                var cell = tbody.append("td"); // add td table elements to html
+                cell.text(value); // attach value to td table elements
+            });
+        });
+    }
+
+    
 
 });
 
