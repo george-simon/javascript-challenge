@@ -1,7 +1,8 @@
 // from data.js
 var tableData = data,
     submit = d3.select("#filter-btn"), // select the submit button
-    tbody = d3.select("tbody");
+    tbody = d3.select("tbody"),
+    output = d3.select(".output");
 
 
 // click handler
@@ -9,6 +10,9 @@ const runEnter = submit.on("click", function() {
 
     // keep the page from refreshing
     d3.event.preventDefault();
+
+    // clear the existing output
+    output.html("");
 
     // select input and get results
     var inputElement = d3.select("#datetime")
@@ -22,7 +26,6 @@ const runEnter = submit.on("click", function() {
     var filtereddata = tableData.filter(date => date.datetime === inputValue);
 
     console.log(filtereddata);
-
 
     filtereddata.forEach(function(UFOdata) { // loop through data and console log each object
         // console.log(UFOdata);
